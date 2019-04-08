@@ -19,7 +19,7 @@
             <form class="login">
                 <input type="text" placeholder="Username" name="username" class="inputtxt">
                 <input type="password" placeholder="Password" name ="password" class="inputtxt">
-                <button type="submit" value="Login" name="loginButton" class="btn"><br>
+                <button type="submit" value="Login" name="loginButton" class="btn">Login Button<br>
 
             </form>
     </section>
@@ -39,7 +39,7 @@
                     <label for="password">Password:</label>
                     <input type="password" placeholder="Enter Password" name="password" class="inputbox" required><br>
                     <label for="password2">Confirm Password:</label>
-                    <input type="password" placeholder="onfirm Password" name="password2" class="inputbox" required><br>
+                    <input type="password" placeholder="Confirm Password" name="password2" class="inputbox" required><br>
                     <div id="submit">
                         <button type="submit" value="Register" name="registerButton" class="btn">Register Button</button>
                     </div>
