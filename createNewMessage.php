@@ -30,7 +30,7 @@ if(isset($_GET["user"]))
     <form method="Post" action="sendmessage.php">
         <input type="hidden" name="user" value="<?php echo $userProfile; ?>" />
         <label for="title">Message Title:</label><br>
-        
+
         <Input type="text" name="title" class="inputbox"><br>
         <textarea name="message" cols="75" rows="5"></textarea><br>
         <button type="submit" name="sendmessage" class="btn">Send message</button>
