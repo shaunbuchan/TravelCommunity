@@ -40,6 +40,7 @@ else{
     <div class="dropdown-content">
         <a href="viewProfile.php">View My Profile</a>
         <a href="editProfile.php">Edit Profile</a>
+        <a href="verifyProfile.php">Verify Profile</a>
     </div>
 </div>
 
