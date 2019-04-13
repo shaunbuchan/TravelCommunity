@@ -54,7 +54,7 @@ else{
 
 
             <div  id="dropBoxImg">
-                <label for="imgUpload">Select file to upload profile image</label><br>
+                <label for="imgUpload">Select file to upload for your profile image</label><br>
             </div>
             <input type="file" name="file" class="inputbox" id="imgInput" />
             <!-- Main Section End  <input type="submit" name="submit" value="Upload"/> -->

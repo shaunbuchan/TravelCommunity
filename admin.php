@@ -42,30 +42,29 @@ else{
             <a href="Outbox.php">view My Outbox</a>
         </div>
     </div>
-<!-- for now
-    <div class="dropdown">
-        <button class="dropbtn">
-            <a href="viewProfile.php">Profile</a>
-            <i class="dropDownMenu"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="viewProfile.php">View My Profile</a>
-            <a href="editProfile.php">Edit Profile</a>
-        </div>
-    </div>
 
     <div class="dropdown">
         <button class="dropbtn">
-            <a href="event.php">Event</a>
+            <a href="toVerify.php">Verify Users</a>
             <i class="dropDownMenu"></i>
         </button>
         <div class="dropdown-content">
-            <a href="viewallEvents.php">View All Events</a>
-            <a href="viewMyEvents.php">View My Events </a>
-            <a href="event.php">Create Event</a>
+            <a href="toVerify.php">Verify Users</a>
         </div>
     </div>
-    -->
+    <!-- for now
+        <div class="dropdown">
+            <button class="dropbtn">
+                <a href="event.php">Event</a>
+                <i class="dropDownMenu"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="viewallEvents.php">View All Events</a>
+                <a href="viewMyEvents.php">View My Events </a>
+                <a href="event.php">Create Event</a>
+            </div>
+        </div>
+        -->
     <div class="dropdown">
         <button class="dropbtn">
             <a href="search.php">Search</a>

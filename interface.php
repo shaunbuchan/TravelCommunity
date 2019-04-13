@@ -50,8 +50,8 @@ else{
         <i class="dropDownMenu"></i>
     </button>
     <div class="dropdown-content">
-        <a href="Inbox.php">View My Inbox</a>
-        <a href="Outbox.php">view My Outbox</a>
+        <a href="inbox.php">View My Inbox</a>
+        <a href="outbox.php">view My Outbox</a>
     </div>
 </div>
 <!-- Section Out
@@ -72,7 +72,7 @@ else{
         <i class="dropDownMenu"></i>
     </button>
     <div class="dropdown-content">
-        <a href="searchForUser.php">Search for a User</a>
+        <a href="search.php">Search for a User</a>
         <a href="searchLocation.php">Search for host in a location</a>
     </div>
 </div>
