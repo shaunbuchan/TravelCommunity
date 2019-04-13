@@ -36,12 +36,13 @@ header('Location: Index.php');
             $country=$row['country'];
             $birthdate=$row['birthdate'];
             $mobile=$row['mobile'];
-            // $image =$row['u_img'];
-            // $upload = "UploadImg/".$image;
+            $profileImage =$row['userPhoto'];
+            $upload = "profileImages/".$profileImage;
         }
     }
     ?>
 <div class="viewProfileTable">
+    <img src="<?php echo $upload; ?>" height="50px" width="50px">
 <table>
     <tr><td>Username:</td><td class="label"><?php echo $username; ?></td></tr>
     <tr><td>Firstname:</td><td  class="label"><?php echo $firstname; ?></td></tr>
