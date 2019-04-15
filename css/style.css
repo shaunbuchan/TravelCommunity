@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.inputtxt{
+    height: 30px;
+}
+body{
+    background-color: whitesmoke;
+}
+.left {
+    color:skyblue;
+    margin-top: 0px;
+}
+.form h2{
+    color: lightskyblue;
+}
+
+.menu-area{
+    padding: 10px 15px;
+    color: whitesmoke;
+}
+#login{
+    float: right;
+    margin-top: -50px;
+}
+header{
+    height: 100px;
+    background-color: rgba(22, 22, 22, 0.52);
+}
+h2{
+    color: skyblue;
+    margin-top:50px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 50px;
+}
+.left{
+    margin-top:0px;
+}
+.boxregister{
+    width: 700px;
+    margin-top: 150px;
+    height: auto;
+    background: rgba(22, 22, 22, 0.52);
+    position: absolute;
+    color: white;
+    border-radius: 10px;
+    text-align: left;
+    margin-left:600px;
+
+}
+.userRegister{
+    width: 800px;
+    margin-top: 50px;
+    background-color: #4CAF50;
+    background: transparent;
+}
+.userRegister h2{
+    color: lightskyblue;
+    margin-left: 200px;
+}
+.form{
+    float: right;
+    position: relative;
+    right: 1200px;
+    top: -100px;
+    border: 2px solid white;
+    width: 600px;
+    text-align: center;
+    margin: 150px auto;
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 0 15px turquoise;
+}
+
+label{
+    float: left;
+    width: 150px;
+    text-align: right;
+    padding-right: 12px;
+    margin-top: 14px;
+    clear: left;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.inputbox{
+
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    height:35px;
+    background: transparent;
+    color:lightskyblue;
+    border-bottom: 3px solid lightskyblue;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.btn{
+    background: deepskyblue;
+    color: white;
+    border: none;
+    margin: 15px;
+    font-size: 20px;
+    padding: 8px 30px;
+    border-radius: 50px;
+}
+.btn:hover{
+    background-color: darkblue;
+}
+.control{
+    position: center;
+    color: black;
+    z-index: 7;
+    font-family: "Century Gothic";
+}
+

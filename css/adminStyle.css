@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Century Gothic";
+    width: 100%;
+}
+.window{
+    colour: white;
+    background-color: whitesmoke;
+}
+/* Style the header */
+header {
+    background-color: #666;
+    padding: 10px;
+    text-align: right;
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    height: 140px;
+}
+header h3{
+    margin-top: 10px;
+}
+.viewMessages{
+    width:800px
+}
+.viewMessages td{
+    border-bottom-color: #666666;
+    border-color: #666666;
+}
+.viewMessages th{
+    width:80px;
+    border-bottom: #666666;
+    text-align:left;
+}
+#logo2{
+    margin-left: 0px;
+    float:left;
+}
+.navbar{
+    overflow: hidden;
+    margin-bottom:0px;
+    width:250px;
+}
+.dropdown{
+    margin-bottom: 0px;
+    width: 250px;
+    overflow: hidden;
+}
+.sidenav{
+    height:90%;
+    width: 200px;
+    margin-top: 140px;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    left: 0;
+    overflow-x: hidden;
+
+}
+#headerLoggedIn{
+      height: 100px;
+      background-color: rgba(22, 22, 22, 0.52);
+  }
+.sidenav a:hover,  .dropbtn:hover{
+    background-color: gray;
+}
+.dropDownMenu{
+    float: right;
+    padding-right: 8px;
+}
+
+.sidenav a, .dropbtn{
+
+    font-size: 20px;
+    font-family: "Century Gothic";
+    padding: 6px 8px 6px 16px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: block;
+    padding: 14px 16px;
+    background-color: inherit;
+    margin:0;
+    font-weight: bold;
+}
+.dropdown-container{
+    display: none;
+    background-color:silver;
+}
+.profileform{
+    font-weight: bold;
+}
+#searchBox{
+    font-size: 20px;
+    border-radius: 10px;
+    width: 400px;
+
+    margin-left:20px;
+    height: 30px;
+
+}
+/* Style the footer */
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+.viewProfileTable{
+    font-size:20px;
+}
+#imgInput{
+height:30px;
+    color:red;
+}
+.inputbox{
+    height:25px;
+    font-size:18px;
+    color:red;
+}
+
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 15px;
+}
+
+.btn:hover{
+    background-color: darkblue;
+}
+
+
+
+.btn{
+    background: deepskyblue;
+    color: white;
+    border: none;
+    margin: 15px;
+    font-size: 20px;
+    padding: 8px 30px;
+    border-radius: 50px;
+}
+

@@ -1,5 +1,6 @@
 <?php
-include_once ('login.php');
+include_once('login.php');
+include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
 }
@@ -11,11 +12,12 @@ else{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>Messages</title>
     <link rel="stylesheet" href="css/adminStyle.css">
     <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
-<body><header>
+<body>
+<header>
 
     <img src="images/logo.jpg" height="120px"; width="200px"; id ='logo2'>
     <section class="headerLoggedIn"> <!-- This class name will enable the styling of output after logging in -->
@@ -71,6 +73,51 @@ else{
     }
 </script>
 
+<main>
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
+        <?php
+        //if(isset($_GET['msgID'])) {
+        $msgID = $_GET['msgID'];
+        //}
+        $query = "SELECT * FROM messages  
+              WHERE messages.messageID ='$msgID'";
+        $result=mysqli_query($conn, $query);
+        if(mysqli_num_rows($result)==1){
+            while ($row= mysqli_fetch_assoc($result)){
+                $msgID=$row['messageID'];
+                $title=$row['title'];
+                $message=$row['message'];
+                $profile=$row['fromUser'];
+                $timestamp=$row['timestamp'];
+            }
+        }
+        ?>
 
+        <div class="Inbox">
+            <form >
+                <h1><?php echo "Message from: $profile" ?></h1>
+                <p style="color: black;">Was delivered on <font color="red"><?php echo $timestamp; ?></font> </p>
+                <p style="color: black;">Title: <font color="red"><?php echo $title; ?></font> </p>
+                <p style="color: black;">Message: <font color="red"><?php echo $message; ?></font> </p>
+            </form>
+
+
+        </div>
+
+        <div class="pmReply">
+            <form action="sendmessage.php" method="post">
+                <p style="color:black;">Reply to <font color="red"><?php echo $profile; ?>: </p>
+                <label for="title" style="color:black">Message Title:</label>
+                <Input type="text" name="title" size=40 class="inputbox"><br><br>
+                <textarea name="message" cols="100" rows="10"></textarea>
+                <br>
+                <input type="hidden" name="user" value="<?php echo $profile; ?>">
+
+                <button type="submit" value="messageReply" name="replyMessage" class="btn">Send Message</button><br>
+            </form>
+
+
+        </div>
+</main>
 </body>
 </html>

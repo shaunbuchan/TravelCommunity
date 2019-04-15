@@ -4,32 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign-Up</title>
-
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body{
+            background-image: url("images/rio.jpg");
+        }
+    </style>
 </head>
 <body>
-<header class="header1"> <!-- class="control " provides the class name for styling the header and footer themes of the webpages, giving the pages a uniform look -->
+<header style='margin-top:0px;' class="control">
 
-    <section class="left"> <!--<section class="left" aligns section content to the left side of the header -->
-        <h2>Travel Community</h2>
-    </section>
+        <h2 style=" margin-top: 0px;">Travel Community</h2>
 
-    <section class="right"> <!-- <section class="right" aligns section content to the right side of the header -->
+
+
+    <!--div class="right"-->
         <form id = "login"  method="post" action="login.php">
 
-            <form class="login">
                 <input type="text" placeholder="Username" name="username" class="inputtxt">
                 <input type="password" placeholder="Password" name ="password" class="inputtxt">
-                <button type="submit" value="Login" name="loginButton" class="btn">Login Button<br>
+                <button type="submit" value="Login" name="loginButton" class="btn">Login<br>
 
-            </form>
-    </section>
+        </form>
+    </div>
 </header>
 <!-- Main Starts -->
 
-<main class="main1">
+<main class="content-control">
+    <section class="boxregister">
     <form id="register" method="post" action="register.php" >
 
         <section  class="grid-60">
+
             <div class="userRegister">
                     <h2>Sign Up</h2><br><br>
                     <label for="username">User Name:</label>
@@ -41,7 +47,7 @@
                     <label for="password2">Confirm Password:</label>
                     <input type="password" placeholder="Confirm Password" name="password2" class="inputbox" required><br>
                     <div id="submit">
-                        <button type="submit" value="Register" name="registerButton" class="btn">Register Button</button>
+                        <button type="submit" value="Register" name="registerButton" class="btn">Register</button>
                     </div>
 
                 </div>

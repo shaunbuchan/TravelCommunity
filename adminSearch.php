@@ -1,5 +1,6 @@
 <?php
 include_once ('login.php');
+include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
 }
@@ -71,6 +72,36 @@ else{
     }
 </script>
 
+<main>
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
+        <form method="GET" action="<?php echo $_SERVER["PHP_SELF"]; ?>" class="searchbar">
+            <input name="keyword" placeholder="Search... " size="50" id="searchBox">
+            <button type="submit" class="btn">Search</button>
+        </form>
 
+        <?php
+        if(isset($_GET["keyword"])){
+            $keyword = $_GET["keyword"];
+        }else{
+            $keyword="";
+        }
+        $result = "";
+
+        $query = "SELECT * FROM user WHERE username !='$username' AND userLevel !='admin' AND username LIKE '%" . $keyword . "%' ";
+        $result = mysqli_query($conn, $query);
+
+        $userList="";
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $userProfile=$row['username'];
+                $userList .="<a href='adminCreateMsg.php?user=".$userProfile."' class ='cat_links'>".$userProfile." -<br> <font size=''-3', color='#778899'><br></a>";
+            }
+            echo $userList;
+        } else{
+            echo "<p style='color: black' class='searchresult'>There are no users associated with $keyword </p>";
+        }
+        ?>
+
+</main>
 </body>
 </html>

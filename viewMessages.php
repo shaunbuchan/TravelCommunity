@@ -13,11 +13,72 @@ else{
 <head>
     <meta charset="UTF-8">
     <title>Messages</title>
-
+    <link rel="stylesheet" href="css/adminStyle.css">
+    <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
 <body>
+<header>
+
+
+    <img src="images/logo.jpg" height="120px"; width="200px"; id ='logo2'>
+    <section class="headerLoggedIn"> <!-- This class name will enable the styling of output after logging in -->
+        <h4 style="float: left; margin-top: 20px; margin-left: 70%;">Username: <?php echo $username ?></h4>
+    </section>
+    <section class="right">
+        <form id = "logout"  method="post" action="logout.php">
+            <button type="submit" value="Logout" name="logOutButton" class="btn"> Log out <br>
+        </form>
+    </section>
+</header>
+<section>
+    <div class="sidenav">
+        <a href="interface.php">Home</a>
+        <button class="dropbtn">Profile
+            <i class="dropDownMenu"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="viewProfile.php">View My Profile</a>
+            <a href="editProfile.php">Edit Profile</a>
+            <a href="verifyProfile.php">Verify Profile</a>
+        </div>
+
+        <button class="dropbtn">Messages
+            <i class="dropDownMenu"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="inbox.php">View My Inbox</a>
+            <a href="outbox.php">View My Outbox</a>
+        </div>
+
+        <button class="dropbtn">Search
+            <i class="dropDownMenu"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="search.php">Search for a User</a>
+            <a href="searchLocation.php">Search for host in a location</a>
+        </div>
+    </div>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropbtn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</section>
 
 <main>
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
     <?php
     //if(isset($_GET['msgID'])) {
     $msgID = $_GET['msgID'];
@@ -39,9 +100,9 @@ else{
     <div class="Inbox">
         <form >
             <h1><?php echo "Message from: $profile" ?></h1>
-            <p style="color: #dddddd">Was delivered on <font color="#00ced1"><?php echo $timestamp; ?></font> </p>
-            <p style="color: #dddddd">Title: <font color="#00ced1"><?php echo $title; ?></font> </p>
-            <p style="color: #dddddd">Message: <font color="#00ced1"><?php echo $message; ?></font> </p>
+            <p style="color: black;">Was delivered on <font color="red"><?php echo $timestamp; ?></font> </p>
+            <p style="color: black;">Title: <font color="red"><?php echo $title; ?></font> </p>
+            <p style="color: black;">Message: <font color="red"><?php echo $message; ?></font> </p>
         </form>
 
 
@@ -49,8 +110,10 @@ else{
 
     <div class="pmReply">
         <form action="sendmessage.php" method="post">
-            <p>Reply to <?php echo $profile; ?>: </p>
-            <textarea name="message" cols="75" rows="5"></textarea>
+            <p style="color:black;">Reply to <font color="red"><?php echo $profile; ?>: </p>
+            <label for="title" style="color:black">Message Title:</label>
+            <Input type="text" name="title" size=40 class="inputbox"><br><br>
+            <textarea name="message" cols="100" rows="10"></textarea>
             <br>
             <input type="hidden" name="user" value="<?php echo $profile; ?>">
 

@@ -1,5 +1,6 @@
 <?php
-include_once ('login.php');
+include_once('login.php');
+include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
 }
@@ -11,11 +12,13 @@ else{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>admin</title>
+    <title>Messages</title>
     <link rel="stylesheet" href="css/adminStyle.css">
     <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
-<body><header>
+<body>
+
+<header>
 
     <img src="images/logo.jpg" height="120px"; width="200px"; id ='logo2'>
     <section class="headerLoggedIn"> <!-- This class name will enable the styling of output after logging in -->
@@ -70,7 +73,33 @@ else{
         });
     }
 </script>
+<?php
+
+if(isset($_GET["user"]))
+{
+    $userProfile = $_GET["user"];
+//simple form here need action page seperate
+    // redirected to sentbox
+}
+?>
+<main>
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
+        <p style="margin-top: 20px; margin-left: 20px">Send Message to : <b style="color:red;"><?php echo $userProfile; ?></b> </p><br>
 
 
+        <form style="margin-left: 20px" method="Post" action="sendmessage.php">
+            <input type="hidden" name="user" value="<?php echo $userProfile; ?>" />
+            <label for="title">Message Title:</label>
+            <Input type="text" name="title" size=40 class="inputbox"><br><br>
+            <textarea name="message" cols="100" rows="10"></textarea><br>
+            <button type="submit" name="sendmessage" class="btn">Send message</button>
+        </form>
+
+</main>
+<!--Main Ends -->
+<!-- Footer -->
+<footer>
+
+</footer>
 </body>
 </html>
