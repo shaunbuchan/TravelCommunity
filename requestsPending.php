@@ -39,9 +39,25 @@ else{
             <a href="viewProfile.php">View My Profile</a>
             <a href="editProfile.php">Edit Profile</a>
             <a href="verifyProfile.php">Verify Profile</a>
-            <a href="Host.php">Host</a>
         </div>
 
+        <button class="dropbtn">Hosting
+            <i class="dropDownMenu"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="Host.php">Create Images</a>
+            <a href="hosting.php">You are going to stay</a>
+            <a href="hosted.php">You stayed</a>
+            <a href="requestsHost.php">Requests to Stay</a>
+        </div
+        <button class="dropbtn">Traveling
+            <i class="dropDownMenu"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="toStay.php">You are going to stay</a>
+            <a href="stayed.php">You stayed</a>
+            <a href="requestsPending.php">Requests to Stay</a>
+        </div>
         <button class="dropbtn">Messages
             <i class="dropDownMenu"></i>
         </button>
