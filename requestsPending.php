@@ -41,15 +41,16 @@ else{
             <a href="verifyProfile.php">Verify Profile</a>
         </div>
 
+
         <button class="dropbtn">Hosting
             <i class="dropDownMenu"></i>
         </button>
         <div class="dropdown-container">
-            <a href="Host.php">Create Images</a>
-            <a href="hosting.php">You are going to stay</a>
-            <a href="hosted.php">You stayed</a>
-            <a href="requestsHost.php">Requests to Stay</a>
-        </div
+            <a href="Host.php">Upload Home Images</a>
+            <a href="hosting.php">Going to Host</a>
+            <a href="hosted.php">You Hosted</a>
+            <a href="requestsHost.php">Requests to Stay With you</a>
+        </div>
         <button class="dropbtn">Traveling
             <i class="dropDownMenu"></i>
         </button>
