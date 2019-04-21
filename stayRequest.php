@@ -77,8 +77,17 @@ else{
     </script>
 </section>
 <main>
-    <article class="window" style="width:90%; float: left; margin-left: 200px">
 
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
+        <form method="POST" action="request.php" class="requestForm" name="stayRequest">
+            <p>Send a request to stay with <?php echo "$host" ?></p>
+            <input type="hidden" value="<?php echo $host; ?>" name="host" >
+            <label for="dateFrom">When would you like to arrive?</label><br>
+            <input type="date" name="dateFrom" class="inputbox"><br>
+            <label for="dateTo">When would you like to stay until?</label><br>
+            <input type="date" name="dateTo" class="inputbox"><br>
+            <button type="submit" name="request" class="btn">Submit</button>
+        </form>
 
 </main>
 <!--Main Ends -->
