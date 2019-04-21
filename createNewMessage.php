@@ -38,6 +38,7 @@ else{
             <a href="viewProfile.php">View My Profile</a>
             <a href="editProfile.php">Edit Profile</a>
             <a href="verifyProfile.php">Verify Profile</a>
+            <a href="Host.php">Start to Host</a>
         </div>
 
         <button class="dropbtn">Messages
@@ -53,7 +54,7 @@ else{
         </button>
         <div class="dropdown-container">
             <a href="search.php">Search for a User</a>
-            <a href="searchLocation.php">Search for host in a location</a>
+            <a href="searchHost.php">Search for host in a location</a>
         </div>
     </div>
     <script>

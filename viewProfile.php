@@ -39,6 +39,7 @@ header('Location: Index.php');
         <a href="viewProfile.php">View My Profile</a>
         <a href="editProfile.php">Edit Profile</a>
         <a href="verifyProfile.php">Verify Profile</a>
+        <a href="Host.php">Host</a>
     </div>
 
     <button class="dropbtn">Messages
@@ -54,7 +55,7 @@ header('Location: Index.php');
     </button>
     <div class="dropdown-container">
         <a href="search.php">Search for a User</a>
-        <a href="searchLocation.php">Search for host in a location</a>
+        <a href="searchHost.php">Search for host in a location</a>
     </div>
 </div>
 <script>
@@ -105,7 +106,7 @@ header('Location: Index.php');
     }
     ?>
 <div class="viewProfileTable">
-    <img src="<?php echo $upload; ?>" height="50px" width="50px">
+    <img style="border-radius: 50%" src="<?php echo $upload; ?>" height="50px" width="50px">
 <table>
     <tr><td>Username:</td><td class="label"><?php echo $username; ?></td></tr>
     <tr><td>Firstname:</td><td  class="label"><?php echo $firstname; ?></td></tr>

@@ -11,21 +11,21 @@ else{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Messages</title>
+    <title>Search</title>
     <link rel="stylesheet" href="css/adminStyle.css">
     <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
 <body>
 <header>
-<img src="images/logo.jpg" height="120px"; width="200px"; id ='logo2'>
-<section class="headerLoggedIn"> <!-- This class name will enable the styling of output after logging in -->
-    <h4 style="float: left; margin-top: 20px; margin-left: 70%;">Username: <?php echo $username ?></h4>
-</section>
-<section class="right">
-    <form id = "logout"  method="post" action="logout.php">
-        <button type="submit" value="Logout" name="logOutButton" class="btn"> Log out <br>
-    </form>
-</section>
+    <img src="images/logo.jpg" height="120px"; width="200px"; id ='logo2'>
+    <section class="headerLoggedIn"> <!-- This class name will enable the styling of output after logging in -->
+        <h4 style="float: left; margin-top: 20px; margin-left: 70%;">Username: <?php echo $username ?></h4>
+    </section>
+    <section class="right">
+        <form id = "logout"  method="post" action="logout.php">
+            <button type="submit" value="Logout" name="logOutButton" class="btn"> Log out <br>
+        </form>
+    </section>
 </header>
 <section>
     <div class="sidenav">
@@ -77,31 +77,34 @@ else{
 </section>
 <main>
     <article class="window" style="width:90%; float: left; margin-left: 200px">
-        <section style="margin-left: 20px">
-            <h2 style="margin-top: 20px; margin-bottom:20px">Inbox</h2>
-    <?php
-    $query2 = "SELECT * FROM user_mailboxes LEFT JOIN messages ON messages.messageID = user_mailboxes.message_id 
-              WHERE user_mailboxes.user = '$username' AND user_mailboxes.mailbox = 'in'";
-    $result=mysqli_query($conn, $query2);
-    // print_r($result);
-    // exit();
-    //$row= mysqli_fetch_assoc($result);
-    $msgList="";
-    if(mysqli_num_rows($result)>0){
-        while($row = mysqli_fetch_assoc($result)){
-            $msgID=$row['messageID'];
-            $title=$row['title'];
-            $message=$row['message'];
-            $fromUser=$row['fromUser'];
-            $when=$row['timestamp'];
-            $msgList .="<a  href='viewMessages.php?msgID=".$msgID."' class ='cat_links'>".$title." -<br> <font size=''-3',  color='#778899'>".$fromUser."<br></a>";
+        <form method="GET" action="<?php echo $_SERVER["PHP_SELF"]; ?>" class="searchbar">
+            <input name="keyword" placeholder="Search... " size="50" id="searchBox">
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        <?php
+        if(isset($_GET["keyword"])){
+            $keyword = $_GET["keyword"];
+        }else{
+            $keyword="";
         }
-        echo $msgList;
-    } else{
-        echo "<p  class='searchresult'>Your Inbox is currently empty</p>";
-    }
-    ?>
-        </section>
+        $result = "";
+
+        $query = "SELECT * FROM user, host WHERE  host.h_username=user.username AND  country LIKE '%" . $keyword . "%' ";
+        $result = mysqli_query($conn, $query);
+
+        $userList="";
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $userProfile=$row['username'];
+                $userList .="<a style='margin-left: 20px' href='createNewMessage.php?user=".$userProfile."' class ='cat_links'>".$userProfile." -<br> <font size=''-3', color='red'><br></a>";
+            }
+            echo $userList;
+        } else{
+            echo "<p style='color: black' class='searchresult'>There are no hosts in $keyword </p>";
+        }
+        ?>
+
 </main>
 <!--Main Ends -->
 <!-- Footer -->

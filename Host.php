@@ -2,24 +2,7 @@
 include_once('login.php');
 include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
-    $username=$_SESSION['username'];
-    $query = "SELECT * FROM user WHERE username='$username'";
-    $result=mysqli_query($conn, $query);
-
-    if(mysqli_num_rows($result)==1){
-        while ($row= mysqli_fetch_assoc($result)){
-            $firstname=$row['firstname'];
-            $lastname=$row['lastname'];
-            $email=$row['email'];
-            $address=$row['address'];
-            $city=$row['city'];
-            $country=$row['country'];
-            $birthdate=$row['birthdate'];
-            $mobile=$row['mobile'];
-            // $image =$row['u_img'];
-            // $upload = "UploadImg/".$image;
-        }
-    }
+    $username = $_SESSION['username'];
 }
 else{
     header('Location: Index.php');
@@ -28,11 +11,10 @@ else{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Verify Profile</title>
+    <title>Host</title>
     <link rel="stylesheet" href="css/adminStyle.css">
     <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
-
 <body>
 <header>
 
@@ -95,27 +77,63 @@ else{
     </script>
 </section>
 <main>
-<article class="window" style="width:90%; float: left; margin-left: 200px">
+    <article class="window" style="width:90%; float: left; margin-left: 200px">
+    <?php
+    $query="SELECT * FROM host where h_username='$username'";
+    $result=mysqli_query($conn, $query);
+    if(mysqli_num_rows($result)==0) {
 
-    <div class="verifyform">
-        <form name="verifyprofile" method="post" action="verification.php" enctype="multipart/form-data">
-            <h2>Verify Profile</h2>
-            <p>Please upload a scanned copy of your passport or international Drivers Licence to authenticate your profile.
-                <br>Images must be kept under 500KB.</p>
-<div  id="dropBoxImg">
-    <label for="imgUpload">Select file to upload</label><br>
-</div>
-<input type="file" name="file" class="inputbox" id="imgInput" />
+        echo "   <form name='hostForm' method='post' action='createHost.php' enctype='multipart/form-data'>
+            <h2>Start to host</h2>
 
-<div class="profilebtn">
-    <button type="submit" value="verifyProfile" name="verifyButton" class="btn">Verify Profile</button><br>
-    <button type="submit" value="cancelprofile" name="cancelButton" class="btn">Cancel</button></div>
-</form>
-</div>
 
+            <div  id='dropBoxImg'>
+                <label for='imgUpload'>Please upload a photo of your home</label><br>
+            </div>
+            <input type='file' name='file' class='inputbox' id='imgInput' />
+            <!-- Main Section End  <input type='submit' name='submit' value='Upload'/> -->
+
+            <br><br>
+
+
+
+            <div class='profilebtn'>
+                <button type='submit' value='createHost' name='createHostButton' class='btn'>Update home</button><br>
+            </div>
+        </form> ";
+    }elseif(mysqli_num_rows($result>0)){
+
+            $NumberofImages=mysqli_num_rows($result);
+             if($NumberofImages<=4){
+                 echo "   <form name='hostForm' method='post' action='createHost.php' enctype='multipart/form-data'>
+            <h2>Add a photo of your home</h2>
+
+
+            <div  id='dropBoxImg'>
+                <label for='imgUpload'>Please upload a photo of your home</label><br>
+            </div>
+            <input type='file' name='file' class='inputbox' id='imgInput' />
+            <!-- Main Section End  <input type='submit' name='submit' value='Upload'/> -->
+
+            <br><br>
+
+
+
+            <div class='profilebtn'>
+            <input type='hidden' value='$NumberofImages' name='ImageNumber'>
+                <button type='submit' value='updateHost' name='updateHostButton' class='btn'>Update home</button><br>
+            </div>
+        </form> ";
+        }else{
+                 echo "Sorry you have already uploaded the maximum allowed photos of your home";
+        }
+    }
+     ?>
 </main>
-<!-- Main Section End  -->
-<!-- Footer Starts -->
+<!--Main Ends -->
+<!-- Footer -->
+<footer>
 
+</footer>
 </body>
 </html>
