@@ -93,13 +93,13 @@ else{
         $query = "SELECT * FROM user, host WHERE  host.h_username=user.username AND  country LIKE '%" . $keyword . "%' ";
         $result = mysqli_query($conn, $query);
 
-        $userList="";
+        $hostList="";
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_assoc($result)){
                 $userProfile=$row['username'];
-                $userList .="<a style='margin-left: 20px' href='createNewMessage.php?user=".$userProfile."' class ='cat_links'>".$userProfile." -<br> <font size=''-3', color='red'><br></a>";
+                $hostList .="<a style='margin-left: 20px' href='stayRequest.php?host=".$userProfile."' class ='cat_links'>".$userProfile." -<br> <font size=''-3', color='red'><br></a>";
             }
-            echo $userList;
+            echo $hostList;
         } else{
             echo "<p style='color: black' class='searchresult'>There are no hosts in $keyword </p>";
         }

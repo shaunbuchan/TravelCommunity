@@ -13,7 +13,12 @@ include_once('Connection.php');
           VALUES('$username', '$email', '$password','user')";
         $result = mysqli_query($conn, $query);
 
+        // Create query to insert the user into the ratings table
+        $query2="INSERT INTO ratings(username, rating, hits) 
+                VALUES('$username', 0, 0)";
+        $result2=mysqli_query($conn, $query2);
         if ($result) {
+
             $_SESSION['username'] = $username;
             header('Location: interface.php');
         } else {
