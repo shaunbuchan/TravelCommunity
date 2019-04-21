@@ -90,7 +90,7 @@ else{
         }
         $result = "";
 
-        $query = "SELECT * FROM user, host WHERE  host.h_username=user.username AND  country LIKE '%" . $keyword . "%' ";
+        $query = "SELECT * FROM user LEFT JOIN host ON user.username=host.h_username WHERE  country LIKE '%" . $keyword . "%' ";
         $result = mysqli_query($conn, $query);
 
         $hostList="";
