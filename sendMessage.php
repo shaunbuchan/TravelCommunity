@@ -16,10 +16,10 @@ if (mysqli_query($conn, $query)) {
     $query3="INSERT INTO user_mailboxes(user, mailbox, message_id) VALUES ('$userProfile', 'in', '$lastID')";
     $result2=mysqli_query($conn, $query2);
     $result3-mysqli_query($conn,$query3);
-    if($username='admin'){
-        header('Location: adminOutBox.php');
-    }else{
+    if($username!='admin'){
         header('Location: outBox.php');
+    }else{
+        header('Location: adminOutBox.php');
     }
 } else {
     echo "Failed to register";
