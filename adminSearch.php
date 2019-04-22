@@ -87,14 +87,19 @@ else{
         }
         $result = "";
 
-        $query = "SELECT * FROM user WHERE username !='$username' AND userLevel !='admin' AND username LIKE '%" . $keyword . "%' ";
+        $query = "SELECT * FROM user, ratings WHERE user.username=ratings.username AND user.username !='$username' AND user.userLevel !='admin' AND user.username LIKE '%" . $keyword . "%' ";
         $result = mysqli_query($conn, $query);
 
         $userList="";
         if(mysqli_num_rows($result)>0){
             while($row = mysqli_fetch_assoc($result)){
                 $userProfile=$row['username'];
-                $userList .="<a href='adminCreateMsg.php?user=".$userProfile."' class ='cat_links'>".$userProfile." -<br> <font size=''-3', color='#778899'><br></a>";
+                $rated=$row['rating'];
+                $hits=$row['hits'];
+                if($hits>0) {
+                    $rank = $rated / $hits;
+                }else {$rank=0;}
+                $userList .="<a href='adminCreateMsg.php?user=".$userProfile."' class ='cat_links'>".$userProfile." - <font size=''-3', color='#778899'></a> Current Rating: $rank/5<br>";
             }
             echo $userList;
         } else{

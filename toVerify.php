@@ -80,7 +80,9 @@ else{
 
 
 
-    if(mysqli_num_rows($result)>0){
+    if(mysqli_num_rows($result)==0){
+        echo "no users are waiting to be verified";
+        }else{
         while ($row= mysqli_fetch_assoc($result)){
             $userProfile=$row['username'];
             $firstname=$row['firstname'];
@@ -96,32 +98,35 @@ else{
             $verificationImage =$row['verificationPhoto'];
             $upload = "verificationImages/".$verificationImage;
         }
-    }
-    ?>
-    <div class="viewProfileTable">
-        <img src="<?php echo $profileUpload; ?>" height="50px" width="50px">
+         echo "<div class='viewProfileTable'>
+        <img src='$profileUpload' height='50px' width='50px'>
         <table>
-            <tr><td>Username:</td><td class="label"><?php echo $userProfile; ?></td></tr>
-            <tr><td>Firstname:</td><td  class="label"><?php echo $firstname; ?></td></tr>
-            <tr><td>Lastname:</td><td class="label"><?php echo $lastname; ?></td></tr>
-            <tr><td>Email:</td><td class="label"><?php echo $email; ?></td></tr>
-            <tr><td>Address:</td><td class="label"><?php echo $address; ?></td></tr>
-            <tr><td>City:</td><td class="label"><?php echo $city; ?></td></tr>
-            <tr><td>Country:</td><td class="label"><?php echo $country; ?></td></tr>
-            <tr><td>Birth:</td><td class="label"><?php echo $birthdate; ?></td></tr>
-            <tr><td>Mobile:</td><td class="label"><?php echo $mobile; ?></td></tr>
+            <tr><td>Username:</td><td class='label'>$userProfile</td></tr>
+        <tr><td>Firstname:</td><td  class='label'>$firstname</td></tr>
+        <tr><td>Lastname:</td><td class='label'>$lastname</td></tr>
+        <tr><td>Email:</td><td class='label'>$email</td></tr>
+        <tr><td>Address:</td><td class='label'>$address</td></tr>
+        <tr><td>City:</td><td class='label'>$city</td></tr>
+        <tr><td>Country:</td><td class='label'>$country</td></tr>
+        <tr><td>Birth:</td><td class='label'>$birthdate</td></tr>
+        <tr><td>Mobile:</td><td class='label'>$mobile</td></tr>
         </table>
-    </div>
-    <div>
-        <img src="<?php echo $upload; ?>" height="300px" width="300px">
-    </div>
-    <form action='Authentication.php' method='post'>
+        </div>
+        <div>
+            <img src='$upload' height='300px' width='300px'>
+        </div>
+        <form action='Authentication.php' method='post'>
 
-    <input type='hidden' name='user' value='<?php echo $userProfile; ?>'
-        <label for="acceptVerify">Accept Verification</label>
-        <input type='checkbox' value='1' name='acceptVerify'><br><br>
-        <button type='submit' value='reject' name='submitVerify' class='btn'>Submit Verification</button><br>
-    </form>
+            <input type='hidden' name='user' value='$userProfile'>
+            <label for='acceptVerify'>Accept Verification</label>
+            <input type='checkbox' value='1' name='acceptVerify'><br><br>
+            <button type='submit' value='reject' name='submitVerify' class='btn'>Submit Verification</button><br>
+        </form> ";
+    }
+
+    
+    ?>
+   
 </main>
 <!--Main Ends -->
 <!-- Footer -->

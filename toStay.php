@@ -110,8 +110,8 @@ else{
                 $country=$row['country'];
                 $fromDate=$row['dateFrom'];
                 $dateTo=$row['dateTo'];
-                $stayed.="You have booked to stay with $host in $city, $country from $fromDate To $dateTo <br>";
-            } echo $stayed;
+                $staying.="You have booked to stay with $host in $city, $country from $fromDate To $dateTo <br>";
+            } echo $staying;
 
         }
         ?>
