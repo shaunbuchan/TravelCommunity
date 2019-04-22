@@ -4,8 +4,15 @@ include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
     $host=$_GET['host'];
-
-
+    $query = "SELECT * FROM user, ratings WHERE user.username=ratings.username AND user.username ='$host'";
+    $result = mysqli_query($conn, $query);
+    while($row=mysqli_fetch_assoc($result)){
+        $rated=$row['rating'];
+        $hits=$row['hits'];
+        if($hits>0) {
+            $rank = $rated / $hits;
+        }else {$rank=0;}
+    }
 }
 else{
     header('Location: Index.php');
@@ -99,7 +106,7 @@ else{
 
     <article class="window" style="width:90%; float: left; margin-left: 200px">
         <form method="POST" action="request.php" class="requestForm" name="stayRequest">
-            <p>Send a request to stay with <?php echo "$host" ?></p>
+            <p>Send a request to stay with <?php echo "$host" ?> <br>Current Rating: <?php echo "$rank" ?>/5</p>
             <input type="hidden" value="<?php echo $host; ?>" name="host" >
             <label for="dateFrom">When would you like to arrive?</label><br>
             <input type="date" name="dateFrom" class="inputbox"><br>
