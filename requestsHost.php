@@ -3,6 +3,8 @@ include_once('login.php');
 include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
+
+
 }
 else{
     header('Location: Index.php');
@@ -94,7 +96,26 @@ else{
 </section>
 <main>
     <article class="window" style="width:90%; float: left; margin-left: 200px">
+<?php
 
+$query="SELECT * FROM requests  WHERE host='$username'";
+$result=mysqli_query($conn, $query);
+
+$requests="";
+if(mysqli_num_rows($result)==0){
+    echo "<p>You have no traveler requests to say with you currently pending</p>";
+    }elseif(mysqli_num_rows($result)>0){
+    while($row = mysqli_fetch_assoc($result)){
+        $requestID=$row['requestID'];
+        $guest=$row['guest'];
+
+        $fromDate=$row['dateFrom'];
+        $dateTo=$row['dateTo'];
+        $requests.="$guest wants to stay with you from $fromDate To $dateTo <br> <input type='hidden' name='rID' value='$requestID' ><button type='submit' name='acceptresponse' value='accept'><a href='respondRequest.php?rID=".$requestID."'>Accept</a></button>       <button type='submit' name='rejectresponse' value='reject'><a href='rejectRequest.php?rID=".$requestID."'>Reject</a></button><br>";
+    } echo $requests;
+
+}
+?>
 
 
     </article>

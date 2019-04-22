@@ -4,6 +4,8 @@ include_once('Connection.php');
 if ( isset($_SESSION['username'] )) {
     $username = $_SESSION['username'];
     $host=$_GET['host'];
+
+
 }
 else{
     header('Location: Index.php');

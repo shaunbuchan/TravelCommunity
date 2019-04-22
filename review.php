@@ -11,7 +11,7 @@ else{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Host</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="css/adminStyle.css">
     <link rel="stylesheet" href="css/unsemantic-grid-responsive-tablet.css">
 </head>
@@ -40,7 +40,6 @@ else{
             <a href="editProfile.php">Edit Profile</a>
             <a href="verifyProfile.php">Verify Profile</a>
         </div>
-
 
         <button class="dropbtn">Hosting
             <i class="dropDownMenu"></i>
@@ -95,57 +94,44 @@ else{
 </section>
 <main>
     <article class="window" style="width:90%; float: left; margin-left: 200px">
-    <?php
-    $query="SELECT * FROM host where h_username='$username'";
-    $result=mysqli_query($conn, $query);
-    if(mysqli_num_rows($result)==0) {
+        <?php
+        $userReview=$_GET['user1'];
+        $query="SELECT * FROM hasrated WHERE recevingReview='$userReview' AND writeReview='$username'";
+       $result=mysqli_query($conn, $query);
 
-        echo "   <form name='hostForm' method='post' action='createHost.php' enctype='multipart/form-data'>
-            <h2>Start to host</h2>
+        if(mysqli_num_rows($result)>0){
+            echo "you have already reviewed this user";
+            }else{
+            $find_rating="SELECT * FROM ratings WHERE username='$userReview'";
+            $result2=mysqli_query($conn, $find_rating);
+            while($row=mysqli_fetch_assoc($result2)){
+                $current_rating=$row['rating'];
+                    $hits=$row['hits'];
+                    if($hits>0) {
+                        $rank = $current_rating / $hits;
+                    }else {$rank=0;}
+                echo " <form action='rate.php' method='POST'>
+                    $userReview: <select name='rating'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>
+                    <input type='hidden' value='$userReview' name='user'>
+                    <input type='submit' value='Rate!'>Current Rating:
+                $rank/5; 
+                </form> ";
 
-
-            <div  id='dropBoxImg'>
-                <label for='imgUpload'>Please upload a photo of your home</label><br>
-            </div>
-            <input type='file' name='file' class='inputbox' id='imgInput' />
-            <!-- Main Section End  <input type='submit' name='submit' value='Upload'/> -->
-
-            <br><br>
-
-
-
-            <div class='profilebtn'>
-                <button type='submit' value='createHost' name='createHostButton' class='btn'>Update home</button><br>
-            </div>
-        </form> ";
-    }else{
-
-            $NumberofImages=mysqli_num_rows($result);
-             if($NumberofImages<=4){
-                 echo "   <form name='hostForm' method='post' action='createHost.php' enctype='multipart/form-data'>
-            <h2>Add a photo of your home</h2>
-
-
-            <div  id='dropBoxImg'>
-                <label for='imgUpload'>Please upload a photo of your home</label><br>
-            </div>
-            <input type='file' name='file' class='inputbox' id='imgInput' />
-            <!-- Main Section End  <input type='submit' name='submit' value='Upload'/> -->
-
-            <br><br>
-
-
-
-            <div class='profilebtn'>
-            <input type='hidden' value='$NumberofImages' name='ImageNumber'>
-                <button type='submit' value='updateHost' name='updateHostButton' class='btn'>Update home</button><br>
-            </div>
-        </form> ";
-        }else{
-                 echo "Sorry you have already uploaded the maximum allowed photos of your home";
+            }
         }
-    }
-     ?>
+
+
+
+        ?>
+
+
+    </article>
 </main>
 <!--Main Ends -->
 <!-- Footer -->

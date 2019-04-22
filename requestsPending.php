@@ -98,17 +98,18 @@ else{
  <section style="margin-left: 20px">
             <h2 style="margin-top: 20px; margin-bottom:20px">Requests pending</h2>
     <?php
-    $query="SELECT * FROM requests WHERE guest='$username'";
-$result=mysqi_query($conn, $query);
+    $query="SELECT * FROM requests LEFT JOIN user ON requests.host=user.username WHERE guest='$username'";
+    $result=mysqli_query($conn, $query);
 
     $requests="";
     if(mysqli_num_rows($result)>0){
         while($row = mysqli_fetch_assoc($result)){
             $host=$row['host'];
-            $message=$row['message'];
+            $city=$row['city'];
+            $country=$row['country'];
             $fromDate=$row['dateFrom'];
             $dateTo=$row['dateTo'];
-        $requests.="You have requested to stay with $host from $fromDate To $dateTo <br>";
+        $requests.="You have requested to stay with $host in $city, $country from $fromDate To $dateTo <br>";
     } echo $requests;
 
     }else{

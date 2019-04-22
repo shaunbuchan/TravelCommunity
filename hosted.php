@@ -95,6 +95,26 @@ else{
 <main>
     <article class="window" style="width:90%; float: left; margin-left: 200px">
 
+        <?php
+
+        $query="SELECT * FROM ishosting  WHERE host='$username' AND dateTo<=CURDATE()";
+        $result=mysqli_query($conn, $query);
+
+        $stayed="";
+        if(mysqli_num_rows($result)==0){
+            echo "<p>You have not had a  traveler book to stay with you in the past</p>";
+        }elseif(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+
+                $guest=$row['guest'];
+
+                $fromDate=$row['dateFrom'];
+                $dateTo=$row['dateTo'];
+                $stayed.="$guest stayed with you from $fromDate To $dateTo <br><button type='submit' name='review' value='review'><a href='review.php?user1=".$guest."'>Review</a></button><br>";
+            } echo $stayed;
+
+        }
+        ?>
 
 
     </article>

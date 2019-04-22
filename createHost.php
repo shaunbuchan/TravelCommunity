@@ -22,7 +22,7 @@ if($fileSize<=500000) {
 // Upload file to server tmp_name
 if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
     $query = "INSERT INTO host(h_username, hostPhoto, imageNumber) 
-          VALUES('$username', '$email', '$password','1')";
+          VALUES('$username', '$filename','1')";
     $result = mysqli_query($conn, $query);
 if($result){
     $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
@@ -66,7 +66,7 @@ $No=$NumberofImages+1;
 // Upload file to server tmp_name
                 if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                     $query = "INSERT INTO host(h_username, hostPhoto, imageNumber) 
-          VALUES('$username', '$email', '$password','$No')";
+          VALUES('$username', '$email', '$fileName','$No')";
                     $result = mysqli_query($conn, $query);
                     if($result){
                         $statusMsg = "The file " . $fileName . " has been uploaded successfully.";

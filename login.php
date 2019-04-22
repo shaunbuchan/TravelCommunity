@@ -4,7 +4,7 @@ if (isset($_POST['loginButton'])) {
     include_once('Connection.php');
     $username = $_POST['username'];
     $password = $_POST['password'];
-    // $pass= md5($password);
+
 
     $query = "SELECT *  FROM user where username = '$username' AND password ='$password' LIMIT 1 ";
     $result = mysqli_query($conn, $query);

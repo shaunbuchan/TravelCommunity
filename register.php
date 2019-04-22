@@ -7,7 +7,7 @@ include_once('Connection.php');
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
-    // $pass= md5($password);
+
     if ($password == $password2) {
         $query = "INSERT INTO user(username, email, password, userLevel) 
           VALUES('$username', '$email', '$password','user')";
